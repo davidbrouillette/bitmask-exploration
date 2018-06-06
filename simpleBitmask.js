@@ -1,16 +1,18 @@
 
 class Bitmask {
     constructor(){
-        this.permissions = {
-            init: 1
-        }
+        this.permissions = {}
         this.masks = {}
     }
 
     addPermission(name){
-        var permissions = Object.keys(this.permissions);
-        console.log(permissions);
-        this.permissions[name] = this.permissions[permissions[permissions.length - 1]] << 1
+        if(Object.keys(this.permissions).length > 0){
+            var permissions = Object.keys(this.permissions);
+            console.log(permissions);
+            this.permissions[name] = this.permissions[permissions[permissions.length - 1]] << 1
+        } else {
+            this.permissions[name] = 1;
+        }
         console.log(`New Permissions: ${JSON.stringify(this.permissions)}`);
     }
 
